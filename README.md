@@ -8,7 +8,7 @@ A scroll-driven platformer resume. Scroll to run through six levels (About, Skil
 - `index.html` — self-contained build that GitHub Pages serves. Don't edit it by hand; it is generated from `src/`.
 - `src/` — editable source (`Interactive Resume.dc.html` + its runtime `support.js`). Serve the folder over HTTP to run it.
 - `tools/sync.py` — copies the source into `index.html`.
-- `venuschetwani-resume-ai-ml.pdf` — linked from the Download buttons (saved as `Venus Chetwani Resume.pdf`).
+- `Venus Chetwani Resume.pdf` — linked from the Download buttons.
 
 ## To update
 1. Edit `src/Interactive Resume.dc.html`.
@@ -16,4 +16,4 @@ A scroll-driven platformer resume. Scroll to run through six levels (About, Skil
 2. Run `python tools/sync.py` from the repo root to rebuild `index.html`.
 3. Open `index.html` in a browser to check, then commit and push.
 
-Resume PDF: replace `venuschetwani-resume-ai-ml.pdf` (keep the same filename).
+Resume PDF: replace `Venus Chetwani Resume.pdf` (keep the same filename).
