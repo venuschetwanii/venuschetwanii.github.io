@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Venus Chetwani · Interactive Resume</title>
+  <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ffd9a2"></rect><rect y="70" width="100" height="30" fill="#8aa85e"></rect><text x="50" y="62" font-family="sans-serif" font-size="40" font-weight="800" text-anchor="middle" fill="#E2654A">VC</text></svg></template>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Outfit:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #fff4e3; }
+    @keyframes vcRun { from { transform: rotate(42deg); } to { transform: rotate(-42deg); } }
+    @keyframes vcBob { from { transform: translateY(0); } to { transform: translateY(-7px); } }
+    @keyframes vcPony { from { transform: rotate(-14deg); } to { transform: rotate(18deg); } }
+    @keyframes vcWave { 0%, 100% { transform: skewY(-7deg) scaleX(1); } 50% { transform: skewY(7deg) scaleX(0.92); } }
+    @keyframes vcFloat { from { transform: translateY(-5px); } to { transform: translateY(6px); } }
+    @keyframes vcArrow { from { transform: translateX(0); } to { transform: translateX(12px); } }
+    @keyframes vcCoin { from { transform: scaleX(1); } to { transform: scaleX(0.18); } }
+    @keyframes vcJump { 0% { transform: translateY(0); } 38% { transform: translateY(-78px); } 60% { transform: translateY(-78px); } 100% { transform: translateY(0); } }
+    .vc-qv-mobile-only { display: none; }
+    @media (max-width: 1180px) { .vc-hud-progress { display: none !important; } }
+    @media (max-width: 900px) { .vc-hud-coins, .vc-hud-skip { display: none !important; } }
+    @media (max-width: 640px) {
+      .vc-hud-name { display: none !important; }
+      .vc-qv-card { padding: 20px 18px !important; }
+      .vc-qv-row { flex-direction: column; align-items: flex-start !important; gap: 2px !important; }
+      .vc-qv-mobile-only { display: block; }
+    }
+  </style>
+</helmet>
+
+<div ref="{{ setRoot }}" style="position: relative; height: 12400px; font-family: 'Outfit', sans-serif; color: #3f3128;">
+
+  <!-- FIXED VIEWPORT -->
+  <div style="position: fixed; inset: 0; overflow: hidden; background: linear-gradient(180deg, #ffd9a2 0%, #ffedd2 48%, #fff7ea 100%);">
+   <div ref="{{ setScene }}" style="position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; transform-origin: left bottom;">
+
+    <!-- sun with glow -->
+    <div style="position: absolute; top: 80px; right: 9vw; width: 84px; height: 84px; border-radius: 50%; background: #ffbc57; box-shadow: 0 0 0 20px rgba(255, 188, 87, 0.28), 0 0 0 44px rgba(255, 188, 87, 0.12);"></div>
+
+    <!-- clouds (parallax slow) -->
+    <div ref="{{ setClouds }}" style="position: absolute; inset: 0; will-change: transform;">
+      <div style="position: absolute; top: 110px; left: 500px; width: 150px; height: 44px; border-radius: 999px; background: #fff7ec; box-shadow: 40px -18px 0 -6px #fff7ec, -34px -12px 0 -12px #fff7ec;"></div>
+      <div style="position: absolute; top: 220px; left: 1500px; width: 110px; height: 34px; border-radius: 999px; background: #fff3e2; box-shadow: 28px -14px 0 -6px #fff3e2;"></div>
+      <div style="position: absolute; top: 90px; left: 2500px; width: 170px; height: 48px; border-radius: 999px; background: #fff7ec; box-shadow: 46px -20px 0 -8px #fff7ec, -40px -12px 0 -14px #fff7ec;"></div>
+      <div style="position: absolute; top: 200px; left: 3600px; width: 120px; height: 36px; border-radius: 999px; background: #fff3e2; box-shadow: 30px -14px 0 -6px #fff3e2;"></div>
+      <div style="position: absolute; top: 120px; left: 4800px; width: 150px; height: 44px; border-radius: 999px; background: #fff7ec; box-shadow: 40px -18px 0 -6px #fff7ec;"></div>
+      <div style="position: absolute; top: 230px; left: 6000px; width: 105px; height: 32px; border-radius: 999px; background: #fff3e2; box-shadow: 26px -12px 0 -6px #fff3e2;"></div>
+      <div style="position: absolute; top: 100px; left: 7200px; width: 160px; height: 46px; border-radius: 999px; background: #fff7ec; box-shadow: 44px -18px 0 -8px #fff7ec, -38px -12px 0 -14px #fff7ec;"></div>
+      <div style="position: absolute; top: 210px; left: 8400px; width: 115px; height: 34px; border-radius: 999px; background: #fff3e2; box-shadow: 28px -14px 0 -6px #fff3e2;"></div>
+      <div style="position: absolute; top: 130px; left: 9600px; width: 150px; height: 44px; border-radius: 999px; background: #fff7ec; box-shadow: 40px -18px 0 -6px #fff7ec;"></div>
+      <div style="position: absolute; top: 190px; left: 10800px; width: 110px; height: 33px; border-radius: 999px; background: #fff3e2; box-shadow: 28px -13px 0 -6px #fff3e2;"></div>
+    </div>
+
+    <!-- far hills -->
+    <div ref="{{ setFarHills }}" style="position: absolute; inset: 0; will-change: transform;">
+      <div style="position: absolute; bottom: 140px; left: 100px; width: 900px; height: 220px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 1400px; width: 700px; height: 160px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 2600px; width: 1000px; height: 250px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 4200px; width: 800px; height: 190px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 5600px; width: 950px; height: 230px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 7200px; width: 750px; height: 170px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 8500px; width: 900px; height: 220px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+      <div style="position: absolute; bottom: 140px; left: 10000px; width: 850px; height: 200px; border-radius: 100% 100% 0 0; background: #f2d49b;"></div>
+    </div>
+
+    <!-- mid hills -->
+    <div ref="{{ setHills }}" style="position: absolute; inset: 0; will-change: transform;">
+      <div style="position: absolute; bottom: 140px; left: 300px; width: 700px; height: 130px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+      <div style="position: absolute; bottom: 140px; left: 1800px; width: 550px; height: 95px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+      <div style="position: absolute; bottom: 140px; left: 3200px; width: 800px; height: 150px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+      <div style="position: absolute; bottom: 140px; left: 5200px; width: 620px; height: 110px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+      <div style="position: absolute; bottom: 140px; left: 7000px; width: 760px; height: 140px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+      <div style="position: absolute; bottom: 140px; left: 9000px; width: 580px; height: 100px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+      <div style="position: absolute; bottom: 140px; left: 10600px; width: 720px; height: 130px; border-radius: 100% 100% 0 0; background: #cdbd7d;"></div>
+    </div>
+
+    <!-- ground fill (static) -->
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 140px; background: #8d6b4e;"></div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 126px; height: 14px; background: #8aa85e; border-top: 3px solid #6d9147;"></div>
+    <div style="position: absolute; left: 6%; bottom: 70px; width: 26px; height: 12px; border-radius: 999px; background: #7c5c42;"></div>
+    <div style="position: absolute; left: 23%; bottom: 40px; width: 34px; height: 14px; border-radius: 999px; background: #7c5c42;"></div>
+    <div style="position: absolute; left: 47%; bottom: 84px; width: 22px; height: 10px; border-radius: 999px; background: #7c5c42;"></div>
+    <div style="position: absolute; left: 66%; bottom: 52px; width: 30px; height: 13px; border-radius: 999px; background: #7c5c42;"></div>
+    <div style="position: absolute; left: 86%; bottom: 76px; width: 25px; height: 11px; border-radius: 999px; background: #7c5c42;"></div>
+
+    <!-- WORLD -->
+    <div ref="{{ setWorld }}" style="position: absolute; inset: 0; will-change: transform;">
+
+      <!-- grass tufts -->
+      <sc-for list="{{ tufts }}" as="t" hint-placeholder-count="4">
+        <div style="position: absolute; bottom: 138px; left: {{ t.x }}px; width: 14px; height: 12px; background: #6d9147; border-radius: 50% 50% 0 0; transform: skewX(-8deg);"></div>
+      </sc-for>
+      <!-- flowers -->
+      <sc-for list="{{ flowers }}" as="f" hint-placeholder-count="3">
+        <div style="position: absolute; bottom: 140px; left: {{ f.x }}px; width: 3px; height: 16px; background: #6d9147;">
+          <div style="position: absolute; top: -8px; left: -4px; width: 11px; height: 11px; border-radius: 50%; background: var(--accent, #E2654A); box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.5);"></div>
+        </div>
+      </sc-for>
+
+      <!-- trees -->
+      <div style="position: absolute; bottom: 140px; left: 920px; width: 120px; height: 215px;">
+        <div style="position: absolute; bottom: 0; left: 52px; width: 16px; height: 78px; background: #7a5b3e; border-radius: 6px 6px 0 0;"></div>
+        <div style="position: absolute; bottom: 46px; left: -2px; width: 62px; height: 62px; border-radius: 50%; background: #7aa657;"></div>
+        <div style="position: absolute; bottom: 50px; left: 62px; width: 58px; height: 58px; border-radius: 50%; background: #7aa657;"></div>
+        <div style="position: absolute; bottom: 58px; left: 12px; width: 96px; height: 96px; border-radius: 50%; background: #6f9a4e;"></div>
+      </div>
+      <div style="position: absolute; bottom: 140px; left: 2580px; width: 100px; height: 180px;">
+        <div style="position: absolute; bottom: 0; left: 44px; width: 14px; height: 64px; background: #7a5b3e; border-radius: 6px 6px 0 0;"></div>
+        <div style="position: absolute; bottom: 42px; left: 0; width: 54px; height: 54px; border-radius: 50%; background: #7aa657;"></div>
+        <div style="position: absolute; bottom: 50px; left: 14px; width: 80px; height: 80px; border-radius: 50%; background: #6f9a4e;"></div>
+      </div>
+      <div style="position: absolute; bottom: 140px; left: 4780px; width: 120px; height: 215px;">
+        <div style="position: absolute; bottom: 0; left: 52px; width: 16px; height: 78px; background: #7a5b3e; border-radius: 6px 6px 0 0;"></div>
+        <div style="position: absolute; bottom: 50px; left: 62px; width: 58px; height: 58px; border-radius: 50%; background: #7aa657;"></div>
+        <div style="position: absolute; bottom: 58px; left: 12px; width: 96px; height: 96px; border-radius: 50%; background: #6f9a4e;"></div>
+      </div>
+      <div style="position: absolute; bottom: 140px; left: 9280px; width: 100px; height: 180px;">
+        <div style="position: absolute; bottom: 0; left: 44px; width: 14px; height: 64px; background: #7a5b3e; border-radius: 6px 6px 0 0;"></div>
+        <div style="position: absolute; bottom: 42px; left: 46px; width: 54px; height: 54px; border-radius: 50%; background: #7aa657;"></div>
+        <div style="position: absolute; bottom: 50px; left: 6px; width: 80px; height: 80px; border-radius: 50%; background: #6f9a4e;"></div>
+      </div>
+      <!-- bushes -->
+      <div style="position: absolute; bottom: 140px; left: 1480px; width: 84px; height: 34px; border-radius: 999px 999px 0 0; background: #7aa657;">
+        <div style="position: absolute; bottom: 0; left: 22px; width: 62px; height: 44px; border-radius: 999px 999px 0 0; background: #6f9a4e;"></div>
+      </div>
+      <div style="position: absolute; bottom: 140px; left: 3960px; width: 84px; height: 34px; border-radius: 999px 999px 0 0; background: #7aa657;">
+        <div style="position: absolute; bottom: 0; left: 22px; width: 62px; height: 44px; border-radius: 999px 999px 0 0; background: #6f9a4e;"></div>
+      </div>
+      <div style="position: absolute; bottom: 140px; left: 8880px; width: 84px; height: 34px; border-radius: 999px 999px 0 0; background: #7aa657;">
+        <div style="position: absolute; bottom: 0; left: 22px; width: 62px; height: 44px; border-radius: 999px 999px 0 0; background: #6f9a4e;"></div>
+      </div>
+      <div style="position: absolute; bottom: 140px; left: 10480px; width: 84px; height: 34px; border-radius: 999px 999px 0 0; background: #7aa657;">
+        <div style="position: absolute; bottom: 0; left: 22px; width: 62px; height: 44px; border-radius: 999px 999px 0 0; background: #6f9a4e;"></div>
+      </div>
+
+      <!-- coins -->
+      <sc-for list="{{ coins }}" as="c" hint-placeholder-count="4">
+        <div ref="{{ setCoin }}" data-x="{{ c.x }}" style="position: absolute; bottom: {{ c.y }}px; left: {{ c.x }}px; width: 26px; height: 26px;">
+          <div style="width: 100%; height: 100%; border-radius: 50%; background: #ffc849; border: 3px solid #e09a28; box-sizing: border-box; box-shadow: inset -3px -3px 0 rgba(191, 124, 24, 0.4); animation: vcCoin 0.55s ease-in-out infinite alternate;"></div>
+        </div>
+      </sc-for>
+
+      <!-- ============ START / HERO ============ -->
+      <section data-screen-label="Start" style="position: absolute; bottom: 140px; left: 0; width: 1400px;">
+        <div style="position: absolute; bottom: 190px; left: 140px; width: 900px;">
+          <div style="font-family: 'Caveat', cursive; font-size: 36px; color: var(--accent, #E2654A); font-weight: 700;">hi, I'm</div>
+          <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-size: 96px; font-weight: 800; letter-spacing: -2px; line-height: 1; color: #3f3128; text-shadow: 0 4px 0 rgba(63, 49, 40, 0.12);">Venus Chetwani</h1>
+          <div style="margin-top: 12px; font-size: 26px; font-weight: 600; color: #7c6650;">AI / Full Stack Engineer · GenAI · LLMs · RAG · AWS</div>
+          <div style="margin-top: 40px; display: inline-flex; align-items: center; gap: 14px; background: #fffdf8; border-radius: 999px; padding: 12px 26px; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.14);">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 22px; font-weight: 700;">scroll to start the run</div>
+            <div style="font-size: 24px; color: var(--accent, #E2654A); animation: vcArrow 0.6s ease-in-out infinite alternate;">&#9654;</div>
+          </div>
+          <div>
+            <button onClick="{{ openQuick }}" style="margin-top: 18px; border: none; background: none; padding: 0; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; color: #7c6650; text-decoration: underline; text-underline-offset: 4px;" style-hover="color: #3f3128;">in a hurry? open the one-page quick view &#8594;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LEVEL 1 · ABOUT ============ -->
+      <section data-screen-label="About" style="position: absolute; bottom: 140px; left: 1550px; width: 1200px;">
+        <div style="position: absolute; bottom: 0; left: 0;">
+          <div style="position: absolute; bottom: 0; left: 46px; width: 10px; height: 128px; background: #8a6242; border-radius: 5px;"></div>
+          <div style="position: absolute; bottom: 112px; left: 0; width: 200px; padding: 10px 14px 10px 52px; background: #a97c50; border-radius: 12px; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.2); transform: rotate(-2deg);">
+            <div style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: var(--accent, #E2654A); color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center;">1</div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #f0d9b8;">LEVEL 1</div>
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.05; color: #fff6e6;">About me</div>
+          </div>
+        </div>
+        <div style="position: absolute; bottom: 115px; left: 320px; width: 560px; background: #fffdf8; border-radius: 18px; padding: 28px 32px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <p style="margin: 0; font-size: 21px; line-height: 1.55;">AI / full stack engineer from Ahmedabad, India, shipping <strong>production GenAI features</strong> — RAG pipelines, LLM assistants and speech-to-text workflows — on OpenAI, Claude and AWS.</p>
+          <p style="margin: 14px 0 0; font-size: 21px; line-height: 1.55;">Currently building legal AI at <strong>Legalwiz.in</strong>: document analysis, grounded answers with citations, and a conversational legal assistant.</p>
+        </div>
+        <div style="position: absolute; bottom: 330px; left: 950px; width: 130px; height: 130px; border-radius: 50%; background: #fffdf8; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14); display: flex; flex-direction: column; align-items: center; justify-content: center; animation: vcFloat 2.2s ease-in-out infinite alternate;">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 32px; font-weight: 800; color: var(--accent, #E2654A);">40%</div>
+          <div style="font-size: 13px; font-weight: 600; text-align: center; line-height: 1.2;">less manual<br>review</div>
+        </div>
+        <div style="position: absolute; bottom: 165px; left: 1030px; width: 115px; height: 115px; border-radius: 50%; background: #fffdf8; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14); display: flex; flex-direction: column; align-items: center; justify-content: center; animation: vcFloat 2.6s ease-in-out infinite alternate;">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 28px; font-weight: 800; color: var(--accent, #E2654A);">30%</div>
+          <div style="font-size: 13px; font-weight: 600; text-align: center; line-height: 1.2;">more data<br>throughput</div>
+        </div>
+      </section>
+
+      <!-- ============ LEVEL 2 · SKILLS ============ -->
+      <section data-screen-label="Skills" style="position: absolute; bottom: 140px; left: 2900px; width: 1900px;">
+        <div style="position: absolute; bottom: 0; left: 0;">
+          <div style="position: absolute; bottom: 0; left: 46px; width: 10px; height: 128px; background: #8a6242; border-radius: 5px;"></div>
+          <div style="position: absolute; bottom: 112px; left: 0; width: 200px; padding: 10px 14px 10px 52px; background: #a97c50; border-radius: 12px; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.2); transform: rotate(2deg);">
+            <div style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: var(--accent, #E2654A); color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center;">2</div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #f0d9b8;">LEVEL 2</div>
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.05; color: #fff6e6;">Skills</div>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 115px; left: 300px; width: 350px; background: #fffdf8; border-radius: 18px; padding: 22px 26px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 23px; font-weight: 800; margin-bottom: 12px;">Languages</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Python</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">TypeScript</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">JavaScript</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">SQL</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">NoSQL</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">C/C++</span>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 115px; left: 730px; width: 390px; background: #fffdf8; border-radius: 18px; padding: 22px 26px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 23px; font-weight: 800; margin-bottom: 12px;">GenAI / LLMs</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+            <span style="background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 700;">OpenAI GPT-4o</span>
+            <span style="background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 700;">Anthropic Claude</span>
+            <span style="background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 700;">RAG</span>
+            <span style="background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 700;">LangChain</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">LangGraph</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Prompt Engineering</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Function Calling</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Embeddings</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">pgvector · FAISS</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Whisper</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Hugging Face</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">LLM Evaluation</span>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 115px; left: 1200px; width: 410px; background: #fffdf8; border-radius: 18px; padding: 22px 26px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 23px; font-weight: 800; margin-bottom: 12px;">ML &amp; MLOps</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">PyTorch</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">TensorFlow</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">scikit-learn</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Transformers</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">LoRA Fine-tuning</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">CNNs</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">OpenCV</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">MLflow</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">AWS Bedrock · SageMaker</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Lambda · SQS · CloudWatch</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Docker · CI/CD</span>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 115px; left: 1690px; width: 300px; background: #fffdf8; border-radius: 18px; padding: 22px 26px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 23px; font-weight: 800; margin-bottom: 12px;">Backend &amp; data</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 9px;">
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Node.js</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">NestJS</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">FastAPI</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">GraphQL</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">React</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Apache Spark</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">PostgreSQL</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">MongoDB</span>
+            <span style="background: #f6ead6; border-radius: 999px; padding: 7px 15px; font-size: 16px; font-weight: 600;">Redis</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LEVEL 3 · EXPERIENCE ============ -->
+      <section data-screen-label="Experience" style="position: absolute; bottom: 140px; left: 5100px; width: 2300px;">
+        <div style="position: absolute; bottom: 0; left: 0;">
+          <div style="position: absolute; bottom: 0; left: 46px; width: 10px; height: 128px; background: #8a6242; border-radius: 5px;"></div>
+          <div style="position: absolute; bottom: 112px; left: 0; width: 210px; padding: 10px 14px 10px 52px; background: #a97c50; border-radius: 12px; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.2); transform: rotate(-2deg);">
+            <div style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: var(--accent, #E2654A); color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center;">3</div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #f0d9b8;">LEVEL 3</div>
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.05; color: #fff6e6;">Experience</div>
+          </div>
+        </div>
+
+        <!-- Mobio -->
+        <div style="position: absolute; bottom: 0; left: 300px; width: 520px; height: 310px; background: #fffdf8; border-radius: 18px 18px 0 0; padding: 24px 26px; box-sizing: border-box; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="position: absolute; top: -62px; left: 30px; width: 6px; height: 62px; background: #8a6242; border-radius: 3px;"></div>
+          <div style="position: absolute; top: -60px; left: 36px; width: 48px; height: 26px; background: var(--accent, #E2654A); clip-path: polygon(0 0, 100% 50%, 0 100%); transform-origin: 0 50%; animation: vcWave 1.6s ease-in-out infinite;"></div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 1.5px; color: #a5805c;">AUG 2022 – DEC 2023</div>
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 25px; font-weight: 800; margin-top: 4px;">Associate Engineer</div>
+          <div style="font-size: 17px; font-weight: 700; color: var(--accent, #E2654A);">Mobio Solutions · Ahmedabad</div>
+          <ul style="margin: 14px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.5;">
+            <li>Cut environment setup time <strong>50%</strong> by containerising a Python Frappe app with Docker</li>
+            <li style="margin-top: 8px;">Built Node/Express REST services with JWT/OAuth2 security &amp; Razorpay payments</li>
+          </ul>
+        </div>
+
+        <!-- Ridgeant -->
+        <div style="position: absolute; bottom: 0; left: 940px; width: 540px; height: 370px; background: #fffdf8; border-radius: 18px 18px 0 0; padding: 24px 26px; box-sizing: border-box; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="position: absolute; top: -62px; left: 30px; width: 6px; height: 62px; background: #8a6242; border-radius: 3px;"></div>
+          <div style="position: absolute; top: -60px; left: 36px; width: 48px; height: 26px; background: var(--accent, #E2654A); clip-path: polygon(0 0, 100% 50%, 0 100%); transform-origin: 0 50%; animation: vcWave 1.8s ease-in-out infinite;"></div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 1.5px; color: #a5805c;">JAN 2024 – JAN 2025</div>
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 25px; font-weight: 800; margin-top: 4px;">Software Engineer</div>
+          <div style="font-size: 17px; font-weight: 700; color: var(--accent, #E2654A);">Ridgeant Technologies · Ahmedabad</div>
+          <ul style="margin: 14px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.5;">
+            <li><strong>+30%</strong> data throughput — Python/PySpark pipelines with LLM-based processing for analytics &amp; ML</li>
+            <li style="margin-top: 8px;"><strong>−25%</strong> backend response times — REST, GraphQL &amp; WebSocket APIs in Node/NestJS</li>
+            <li style="margin-top: 8px;">Led design sessions &amp; code reviews across Agile SDLC</li>
+          </ul>
+        </div>
+
+        <!-- Legalwiz -->
+        <div style="position: absolute; bottom: 0; left: 1600px; width: 560px; height: 430px; background: #fffdf8; border-radius: 18px 18px 0 0; padding: 24px 26px; box-sizing: border-box; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="position: absolute; top: -62px; left: 30px; width: 6px; height: 62px; background: #8a6242; border-radius: 3px;"></div>
+          <div style="position: absolute; top: -60px; left: 36px; width: 48px; height: 26px; background: var(--accent, #E2654A); clip-path: polygon(0 0, 100% 50%, 0 100%); transform-origin: 0 50%; animation: vcWave 1.5s ease-in-out infinite;"></div>
+          <div style="position: absolute; top: 20px; right: 20px; background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 5px 13px; font-size: 13px; font-weight: 800; letter-spacing: 1px;">CURRENT</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 1.5px; color: #a5805c;">JAN 2025 – PRESENT</div>
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 25px; font-weight: 800; margin-top: 4px;">AI / Full Stack Engineer</div>
+          <div style="font-size: 17px; font-weight: 700; color: var(--accent, #E2654A);">Legalwiz.in · Ahmedabad</div>
+          <ul style="margin: 14px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.5;">
+            <li><strong>−40%</strong> manual legal review — GenAI document analysis, clause extraction &amp; summarization on GPT-4o and Claude</li>
+            <li style="margin-top: 8px;">End-to-end RAG over the legal corpus — embeddings, pgvector/FAISS, hybrid retrieval &amp; re-ranking with citations</li>
+            <li style="margin-top: 8px;">Conversational legal assistant on LangChain/LangGraph with memory, tool calling &amp; guardrails</li>
+            <li style="margin-top: 8px;">Call summarization with Whisper + LLMs on event-driven AWS Lambda/SQS workers</li>
+            <li style="margin-top: 8px;">LLM evals, prompt versioning, caching &amp; model routing to cut latency and token cost</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ LEVEL 4 · PROJECTS ============ -->
+      <section data-screen-label="Projects" style="position: absolute; bottom: 140px; left: 7750px; width: 1500px;">
+        <div style="position: absolute; bottom: 0; left: 0;">
+          <div style="position: absolute; bottom: 0; left: 46px; width: 10px; height: 128px; background: #8a6242; border-radius: 5px;"></div>
+          <div style="position: absolute; bottom: 112px; left: 0; width: 200px; padding: 10px 14px 10px 52px; background: #a97c50; border-radius: 12px; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.2); transform: rotate(2deg);">
+            <div style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: var(--accent, #E2654A); color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center;">4</div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #f0d9b8;">LEVEL 4</div>
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.05; color: #fff6e6;">Projects</div>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 0; left: 300px;">
+          <div style="position: absolute; bottom: 0; left: 60px; width: 8px; height: 200px; background: #8a6242; border-radius: 4px;"></div>
+          <div style="position: absolute; bottom: 0; left: 380px; width: 8px; height: 200px; background: #8a6242; border-radius: 4px;"></div>
+          <div style="position: absolute; bottom: 190px; left: 0; width: 480px; background: #fffdf8; border-radius: 18px; padding: 24px 28px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14); transform: rotate(-1.5deg); box-sizing: border-box;">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 27px; font-weight: 800;">Smart Query</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">Python</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">LangChain</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">RAG</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">PySpark</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">Hudi</span>
+              <span style="background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 700;">LLM</span>
+            </div>
+            <ul style="margin: 14px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.5;">
+              <li>Natural-language-to-query (text-to-SQL/NoSQL) across Postgres, MySQL, Mongo &amp; Cassandra with RAG schema retrieval — <strong>+35%</strong> retrieval speed</li>
+              <li style="margin-top: 8px;">LLM + PySpark pipelines with Hudi/Parquet — <strong>+40%</strong> integration, <strong>−50%</strong> query time</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="position: absolute; bottom: 0; left: 950px;">
+          <div style="position: absolute; bottom: 0; left: 60px; width: 8px; height: 160px; background: #8a6242; border-radius: 4px;"></div>
+          <div style="position: absolute; bottom: 0; left: 360px; width: 8px; height: 160px; background: #8a6242; border-radius: 4px;"></div>
+          <div style="position: absolute; bottom: 150px; left: 0; width: 460px; background: #fffdf8; border-radius: 18px; padding: 24px 28px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14); transform: rotate(1.5deg); box-sizing: border-box;">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 27px; font-weight: 800;">Central Perk</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">React</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">Node.js</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">Firebase</span>
+              <span style="background: #f6ead6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600;">Docker</span>
+              <span style="background: var(--accent, #E2654A); color: #fff6e6; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 700;">Stripe</span>
+            </div>
+            <ul style="margin: 14px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.5;">
+              <li>Full-stack web app — REST API, Firebase backend, React frontend &amp; Stripe payments</li>
+              <li style="margin-top: 8px;"><strong>+25%</strong> user retention, <strong>+15%</strong> conversion from UX redesign</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ LEVEL 5 · EDUCATION ============ -->
+      <section data-screen-label="Education" style="position: absolute; bottom: 140px; left: 9450px; width: 1100px;">
+        <div style="position: absolute; bottom: 0; left: 0;">
+          <div style="position: absolute; bottom: 0; left: 46px; width: 10px; height: 128px; background: #8a6242; border-radius: 5px;"></div>
+          <div style="position: absolute; bottom: 112px; left: 0; width: 200px; padding: 10px 14px 10px 52px; background: #a97c50; border-radius: 12px; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.2); transform: rotate(-2deg);">
+            <div style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%); width: 34px; height: 34px; border-radius: 50%; background: var(--accent, #E2654A); color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center;">5</div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #f0d9b8;">LEVEL 5</div>
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 24px; font-weight: 800; line-height: 1.05; color: #fff6e6;">Education</div>
+          </div>
+        </div>
+        <div style="position: absolute; bottom: 115px; left: 300px; width: 540px; background: #fffdf8; border-radius: 18px; padding: 28px 32px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 25px; font-weight: 800;">B.E. Computer Science</div>
+          <div style="font-size: 18px; font-weight: 700; color: var(--accent, #E2654A); margin-top: 2px;">AI &amp; ML Specialization</div>
+          <div style="font-size: 17px; margin-top: 10px; color: #7c6650;">New LJ Institute of Engineering &amp; Technology</div>
+        </div>
+        <div style="position: absolute; bottom: 300px; left: 890px; animation: vcFloat 2.4s ease-in-out infinite alternate;">
+          <div style="width: 130px; height: 130px; border-radius: 50%; background: var(--accent, #E2654A); box-shadow: 0 6px 0 rgba(63, 49, 40, 0.18), inset 0 0 0 8px rgba(255, 255, 255, 0.25); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 38px; font-weight: 800; color: #fff6e6; line-height: 1;">9.6</div>
+            <div style="font-size: 14px; font-weight: 700; letter-spacing: 1px; color: #ffe3d6;">CGPA</div>
+          </div>
+          <div style="position: absolute; top: 122px; left: 34px; width: 16px; height: 30px; background: #e0b13e; transform: rotate(14deg); border-radius: 0 0 4px 4px;"></div>
+          <div style="position: absolute; top: 122px; left: 78px; width: 16px; height: 30px; background: #e0b13e; transform: rotate(-14deg); border-radius: 0 0 4px 4px;"></div>
+        </div>
+      </section>
+
+      <!-- ============ LEVEL 6 · CONTACT / FINISH ============ -->
+      <section data-screen-label="Contact" style="position: absolute; bottom: 140px; left: 10650px; width: 1200px;">
+        <div style="position: absolute; bottom: 0; left: 40px; width: 9px; height: 390px; background: #8a6242; border-radius: 4px;"></div>
+        <div style="position: absolute; bottom: 322px; left: 47px; width: 120px; height: 64px; background: var(--accent, #E2654A); clip-path: polygon(0 0, 100% 0, 84% 50%, 100% 100%, 0 100%); transform-origin: 0 50%; animation: vcWave 1.4s ease-in-out infinite; display: flex; align-items: center; padding-left: 14px; box-sizing: border-box;">
+          <span style="color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: 1.5px;">FINISH</span>
+        </div>
+        <div style="position: absolute; bottom: 115px; left: 260px; width: 720px;">
+          <div style="font-family: 'Caveat', cursive; font-size: 38px; font-weight: 700; color: var(--accent, #E2654A);">you made it to the end!</div>
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 52px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-top: 6px; text-shadow: 0 4px 0 rgba(63, 49, 40, 0.12);">Let's build something together.</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px;">
+            <a href="mailto:venuschetwani@gmail.com" style="background: var(--accent, #E2654A); border-radius: 999px; padding: 13px 26px; font-size: 18px; font-weight: 700; color: #fff6e6; text-decoration: none; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.25);" style-hover="transform: translateY(2px); box-shadow: 0 3px 0 rgba(63, 49, 40, 0.25);">venuschetwani@gmail.com</a>
+            <a href="tel:+919427114873" style="background: #fffdf8; border-radius: 999px; padding: 13px 26px; font-size: 18px; font-weight: 700; color: #3f3128; text-decoration: none; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.18);" style-hover="transform: translateY(2px); box-shadow: 0 3px 0 rgba(63, 49, 40, 0.18);">+91 94271 14873</a>
+            <a href="https://www.linkedin.com/in/venus-chetwani/" target="_blank" style="background: #fffdf8; border-radius: 999px; padding: 13px 26px; font-size: 18px; font-weight: 700; color: var(--accent, #E2654A); text-decoration: none; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.18);" style-hover="transform: translateY(2px); box-shadow: 0 3px 0 rgba(63, 49, 40, 0.18);">LinkedIn</a>
+            <a href="https://github.com/venuschetwanii" target="_blank" style="background: #fffdf8; border-radius: 999px; padding: 13px 26px; font-size: 18px; font-weight: 700; color: var(--accent, #E2654A); text-decoration: none; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.18);" style-hover="transform: translateY(2px); box-shadow: 0 3px 0 rgba(63, 49, 40, 0.18);">GitHub</a>
+            <a href="venuschetwani-resume-ai-ml.pdf" download="Venus Chetwani Resume.pdf" style="background: var(--accent, #E2654A); border-radius: 999px; padding: 13px 26px; font-size: 18px; font-weight: 700; color: #fff6e6; text-decoration: none; box-shadow: 0 5px 0 rgba(63, 49, 40, 0.25);" style-hover="transform: translateY(2px); box-shadow: 0 3px 0 rgba(63, 49, 40, 0.25);">&#8681; Download Resume</a>
+          </div>
+          <div style="font-family: 'Caveat', cursive; font-size: 28px; font-weight: 600; color: #a5805c; margin-top: 40px;">thanks for playing ✦</div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CHARACTER (female runner) -->
+    <div ref="{{ setCharOuter }}" style="position: absolute; left: 21vw; bottom: 138px; width: 58px; height: 102px; z-index: 60;">
+      <div ref="{{ setBob }}" style="width: 100%; height: 100%; animation: vcBob 0.32s ease-in-out infinite alternate; animation-play-state: paused;">
+        <div ref="{{ setDir }}" style="position: relative; width: 100%; height: 100%;">
+          <!-- bob hair back -->
+          <div style="position: absolute; top: 4px; left: 11px; width: 34px; height: 34px; border-radius: 50% 50% 42% 42%; background: #2d2320; z-index: 4;"></div>
+          <!-- back arm -->
+          <div ref="{{ setArmL }}" style="position: absolute; top: 38px; left: 26px; width: 7px; height: 27px; background: var(--accent, #E2654A); filter: brightness(0.82); border-radius: 6px; transform-origin: 3.5px 4px; animation: vcRun 0.32s linear infinite alternate; animation-delay: -0.32s; animation-play-state: paused; z-index: 4;">
+            <div style="position: absolute; bottom: -2px; left: -1px; width: 9px; height: 8px; background: #eec49c; border-radius: 5px;"></div>
+          </div>
+          <!-- back leg -->
+          <div ref="{{ setLegL }}" style="position: absolute; top: 64px; left: 25px; width: 8px; height: 30px; background: #33445c; border-radius: 4px; transform-origin: 4px 3px; animation: vcRun 0.32s linear infinite alternate; animation-play-state: paused; z-index: 2;">
+            <div style="position: absolute; bottom: -4px; left: -1px; width: 16px; height: 8px; background: #f4f1ea; border-radius: 4px 6px 3px 3px; box-shadow: 0 2px 0 rgba(63, 49, 40, 0.3);"></div>
+            <div style="position: absolute; bottom: -4px; left: 6px; width: 6px; height: 3px; background: var(--accent, #E2654A); border-radius: 2px;"></div>
+          </div>
+          <!-- front leg -->
+          <div ref="{{ setLegR }}" style="position: absolute; top: 64px; left: 25px; width: 8px; height: 30px; background: #3d5170; border-radius: 4px; transform-origin: 4px 3px; animation: vcRun 0.32s linear infinite alternate; animation-delay: -0.32s; animation-play-state: paused; z-index: 3;">
+            <div style="position: absolute; bottom: -4px; left: -1px; width: 16px; height: 8px; background: #fffdf8; border-radius: 4px 6px 3px 3px; box-shadow: 0 2px 0 rgba(63, 49, 40, 0.3);"></div>
+            <div style="position: absolute; bottom: -4px; left: 6px; width: 6px; height: 3px; background: var(--accent, #E2654A); border-radius: 2px;"></div>
+          </div>
+          <!-- hoodie torso -->
+          <div style="position: absolute; top: 32px; left: 15px; width: 30px; height: 32px; background: #f4f1ea; border-radius: 12px 12px 6px 6px; z-index: 5;"></div>
+          <!-- hoodie pocket -->
+          <div style="position: absolute; top: 52px; left: 20px; width: 20px; height: 9px; border-radius: 4px; background: var(--accent, #E2654A); opacity: 0.18; z-index: 6;"></div>
+          <!-- hoodie zipper stripe -->
+          <div style="position: absolute; top: 32px; left: 29px; width: 3px; height: 30px; background: var(--accent, #E2654A); z-index: 6;"></div>
+          <!-- hood collar -->
+          <div style="position: absolute; top: 28px; left: 17px; width: 26px; height: 14px; background: var(--accent, #E2654A); border-radius: 50% 50% 0 0; z-index: 5;"></div>
+          <!-- head -->
+          <div style="position: absolute; top: 6px; left: 15px; width: 28px; height: 28px; border-radius: 50%; background: #f3c9a1; z-index: 6;">
+            <div style="position: absolute; top: 11px; right: 6px; width: 4px; height: 4px; border-radius: 50%; background: #3b2b20;"></div>
+            <div style="position: absolute; top: 17px; right: 3px; width: 7px; height: 4px; border-bottom: 2.5px solid #3b2b20; border-radius: 0 0 7px 7px;"></div>
+            <div style="position: absolute; top: 17px; right: 11px; width: 6px; height: 4px; border-radius: 50%; background: rgba(226, 101, 74, 0.35);"></div>
+          </div>
+          <!-- bob fringe -->
+          <div style="position: absolute; top: 2px; left: 13px; width: 32px; height: 15px; background: #2d2320; border-radius: 16px 16px 4px 4px; z-index: 7;"></div>
+          <div style="position: absolute; top: 12px; left: 13px; width: 8px; height: 16px; background: #2d2320; border-radius: 0 0 6px 4px; z-index: 7;"></div>
+          <!-- front arm -->
+          <div ref="{{ setArmR }}" style="position: absolute; top: 38px; left: 26px; width: 7px; height: 27px; background: var(--accent, #E2654A); border-radius: 6px; transform-origin: 3.5px 4px; animation: vcRun 0.32s linear infinite alternate; animation-play-state: paused; z-index: 8;">
+            <div style="position: absolute; bottom: -2px; left: -1px; width: 9px; height: 8px; background: #f3c9a1; border-radius: 5px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HUD -->
+    <div style="position: absolute; top: 14px; left: 18px; right: 18px; display: flex; align-items: center; justify-content: space-between; z-index: 100; pointer-events: none;">
+      <div class="vc-hud-name" style="display: flex; align-items: center; gap: 12px; background: rgba(255, 253, 248, 0.95); border-radius: 999px; padding: 8px 18px 8px 8px; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.14); pointer-events: auto;">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: var(--accent, #E2654A); color: #fff6e6; font-family: 'Baloo 2', sans-serif; font-size: 19px; font-weight: 800; display: flex; align-items: center; justify-content: center;">V</div>
+        <div>
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 16px; font-weight: 800; line-height: 1.1;">Venus Chetwani</div>
+          <div style="font-size: 12px; font-weight: 600; color: #a5805c; line-height: 1.1;">AI / Full Stack Engineer</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-left: auto; pointer-events: auto;">
+        <div class="vc-hud-coins" style="display: flex; align-items: center; gap: 8px; background: rgba(255, 253, 248, 0.95); border-radius: 999px; padding: 9px 16px; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.14);">
+          <div style="width: 20px; height: 20px; border-radius: 50%; background: #ffc849; border: 3px solid #e09a28; box-sizing: border-box;"></div>
+          <div ref="{{ setCoinLbl }}" style="font-family: 'Baloo 2', sans-serif; font-size: 16px; font-weight: 800; min-width: 44px;">0/24</div>
+        </div>
+        <div class="vc-hud-progress" style="display: flex; align-items: center; gap: 12px; background: rgba(255, 253, 248, 0.95); border-radius: 999px; padding: 9px 16px; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.14);">
+          <div ref="{{ setLvl }}" style="font-size: 12px; font-weight: 800; letter-spacing: 1.5px; color: var(--accent, #E2654A); min-width: 150px; text-align: right;">START</div>
+          <div style="width: 180px; height: 12px; border-radius: 999px; background: #f0e2ca; overflow: hidden;">
+            <div ref="{{ setFill }}" style="width: 0%; height: 100%; background: var(--accent, #E2654A); border-radius: 999px;"></div>
+          </div>
+        </div>
+        <a href="venuschetwani-resume-ai-ml.pdf" download="Venus Chetwani Resume.pdf" style="border: none; background: var(--accent, #E2654A); border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 700; color: #fff6e6; cursor: pointer; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.3); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;" style-hover="transform: translateY(2px); box-shadow: 0 2px 0 rgba(63, 49, 40, 0.3);">&#8681; Resume</a>
+        <button onClick="{{ openQuick }}" style="border: none; background: #fffdf8; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 700; color: #3f3128; cursor: pointer; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.18);" style-hover="transform: translateY(2px); box-shadow: 0 2px 0 rgba(63, 49, 40, 0.18);">Quick view</button>
+        <button class="vc-hud-skip" onClick="{{ skipToContact }}" style="border: none; background: #3f3128; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 700; color: #fff6e6; cursor: pointer; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.3);" style-hover="transform: translateY(2px); box-shadow: 0 2px 0 rgba(63, 49, 40, 0.3);">Skip to contact</button>
+      </div>
+    </div>
+
+   </div>
+  </div>
+
+  <!-- QUICK VIEW (one-page resume; default on phones, or open with #quick) -->
+  <div ref="{{ setQuick }}" style="display: none; position: fixed; inset: 0; z-index: 300; overflow-y: auto; overscroll-behavior: contain; background: #fff4e3;">
+    <div style="max-width: 880px; margin: 0 auto; padding: 20px 16px 64px; box-sizing: border-box;">
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+        <div style="font-family: 'Caveat', cursive; font-size: 30px; font-weight: 700; color: var(--accent, #E2654A);">quick view</div>
+        <div style="text-align: right;">
+          <button onClick="{{ closeQuick }}" style="border: none; background: #3f3128; border-radius: 999px; padding: 11px 18px; font-size: 14px; font-weight: 700; color: #fff6e6; cursor: pointer; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.3);" style-hover="transform: translateY(2px); box-shadow: 0 2px 0 rgba(63, 49, 40, 0.3);">&#9654; Play the interactive version</button>
+          <div class="vc-qv-mobile-only" style="font-size: 12px; font-weight: 600; color: #a5805c; margin-top: 8px;">best on a laptop</div>
+        </div>
+      </div>
+
+      <!-- header -->
+      <div class="vc-qv-card" style="margin-top: 18px; background: #fffdf8; border-radius: 18px; padding: 28px 30px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+        <h1 style="margin: 0; font-family: 'Baloo 2', sans-serif; font-size: clamp(38px, 8vw, 60px); font-weight: 800; letter-spacing: -1px; line-height: 1.05;">Venus Chetwani</h1>
+        <div style="margin-top: 6px; font-size: clamp(17px, 3.6vw, 21px); font-weight: 600; color: #7c6650;">AI / Full Stack Engineer · GenAI · LLMs · RAG · AWS</div>
+        <div style="margin-top: 4px; font-size: 15px; color: #a5805c;">Ahmedabad, India</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+          <a href="venuschetwani-resume-ai-ml.pdf" download="Venus Chetwani Resume.pdf" style="background: var(--accent, #E2654A); border-radius: 999px; padding: 10px 18px; font-size: 15px; font-weight: 700; color: #fff6e6; text-decoration: none; box-shadow: 0 4px 0 rgba(63, 49, 40, 0.25);">&#8681; Download Resume</a>
+          <a href="mailto:venuschetwani@gmail.com" style="background: #f6ead6; border-radius: 999px; padding: 10px 18px; font-size: 15px; font-weight: 700; color: #3f3128; text-decoration: none;">venuschetwani@gmail.com</a>
+          <a href="tel:+919427114873" style="background: #f6ead6; border-radius: 999px; padding: 10px 18px; font-size: 15px; font-weight: 700; color: #3f3128; text-decoration: none;">+91 94271 14873</a>
+          <a href="https://www.linkedin.com/in/venus-chetwani/" target="_blank" style="background: #f6ead6; border-radius: 999px; padding: 10px 18px; font-size: 15px; font-weight: 700; color: var(--accent, #E2654A); text-decoration: none;">LinkedIn</a>
+          <a href="https://github.com/venuschetwanii" target="_blank" style="background: #f6ead6; border-radius: 999px; padding: 10px 18px; font-size: 15px; font-weight: 700; color: var(--accent, #E2654A); text-decoration: none;">GitHub</a>
+        </div>
+        <p style="margin: 22px 0 0; font-size: 17px; line-height: 1.6;">AI / full stack engineer shipping <strong>production GenAI features</strong> — RAG pipelines, LLM assistants and speech-to-text workflows — on OpenAI, Claude and AWS. Currently building legal AI at <strong>Legalwiz.in</strong>.</p>
+      </div>
+
+      <!-- experience -->
+      <div class="vc-qv-card" style="margin-top: 22px; background: #fffdf8; border-radius: 18px; padding: 26px 30px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+        <div style="font-family: 'Baloo 2', sans-serif; font-size: 26px; font-weight: 800;">Experience</div>
+
+        <div style="margin-top: 14px;">
+          <div class="vc-qv-row" style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 21px; font-weight: 800;">AI / Full Stack Engineer</div>
+            <div style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: #a5805c; white-space: nowrap;">JAN 2025 – PRESENT</div>
+          </div>
+          <div style="font-size: 16px; font-weight: 700; color: var(--accent, #E2654A);">Legalwiz.in · Ahmedabad</div>
+          <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.55;">
+            <li><strong>−40%</strong> manual legal review — GenAI document analysis, clause extraction &amp; summarization on GPT-4o and Claude</li>
+            <li style="margin-top: 6px;">End-to-end RAG over the legal corpus — embeddings, pgvector/FAISS, hybrid retrieval &amp; re-ranking with citations</li>
+            <li style="margin-top: 6px;">Conversational legal assistant on LangChain/LangGraph with memory, tool calling &amp; guardrails</li>
+            <li style="margin-top: 6px;">Call summarization with Whisper + LLMs on event-driven AWS Lambda/SQS workers</li>
+            <li style="margin-top: 6px;">LLM evals, prompt versioning, caching &amp; model routing to cut latency and token cost</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 22px; padding-top: 20px; border-top: 2px dashed #f0e2ca;">
+          <div class="vc-qv-row" style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 21px; font-weight: 800;">Software Engineer</div>
+            <div style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: #a5805c; white-space: nowrap;">JAN 2024 – JAN 2025</div>
+          </div>
+          <div style="font-size: 16px; font-weight: 700; color: var(--accent, #E2654A);">Ridgeant Technologies · Ahmedabad</div>
+          <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.55;">
+            <li><strong>+30%</strong> data throughput — Python/PySpark pipelines with LLM-based processing for analytics &amp; ML</li>
+            <li style="margin-top: 6px;"><strong>−25%</strong> backend response times — REST, GraphQL &amp; WebSocket APIs in Node/NestJS</li>
+            <li style="margin-top: 6px;">Led design sessions &amp; code reviews across Agile SDLC</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 22px; padding-top: 20px; border-top: 2px dashed #f0e2ca;">
+          <div class="vc-qv-row" style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+            <div style="font-family: 'Baloo 2', sans-serif; font-size: 21px; font-weight: 800;">Associate Engineer</div>
+            <div style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px; color: #a5805c; white-space: nowrap;">AUG 2022 – DEC 2023</div>
+          </div>
+          <div style="font-size: 16px; font-weight: 700; color: var(--accent, #E2654A);">Mobio Solutions · Ahmedabad</div>
+          <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.55;">
+            <li>Cut environment setup time <strong>50%</strong> by containerising a Python Frappe app with Docker</li>
+            <li style="margin-top: 6px;">Built Node/Express REST services with JWT/OAuth2 security &amp; Razorpay payments</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- projects -->
+      <div class="vc-qv-card" style="margin-top: 22px; background: #fffdf8; border-radius: 18px; padding: 26px 30px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+        <div style="font-family: 'Baloo 2', sans-serif; font-size: 26px; font-weight: 800;">Projects</div>
+
+        <div style="margin-top: 14px;">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 21px; font-weight: 800;">Smart Query</div>
+          <div style="font-size: 14px; font-weight: 600; color: #a5805c;">Python · LangChain · RAG · PySpark · Hudi · LLM</div>
+          <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.55;">
+            <li>Natural-language-to-query (text-to-SQL/NoSQL) across Postgres, MySQL, Mongo &amp; Cassandra with RAG schema retrieval — <strong>+35%</strong> retrieval speed</li>
+            <li style="margin-top: 6px;">LLM + PySpark pipelines with Hudi/Parquet — <strong>+40%</strong> integration, <strong>−50%</strong> query time</li>
+          </ul>
+        </div>
+
+        <div style="margin-top: 22px; padding-top: 20px; border-top: 2px dashed #f0e2ca;">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 21px; font-weight: 800;">Central Perk</div>
+          <div style="font-size: 14px; font-weight: 600; color: #a5805c;">React · Node.js · Firebase · Docker · Stripe</div>
+          <ul style="margin: 10px 0 0; padding-left: 20px; font-size: 16px; line-height: 1.55;">
+            <li>Full-stack web app — REST API, Firebase backend, React frontend &amp; Stripe payments</li>
+            <li style="margin-top: 6px;"><strong>+25%</strong> user retention, <strong>+15%</strong> conversion from UX redesign</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- skills -->
+      <div class="vc-qv-card" style="margin-top: 22px; background: #fffdf8; border-radius: 18px; padding: 26px 30px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+        <div style="font-family: 'Baloo 2', sans-serif; font-size: 26px; font-weight: 800;">Skills</div>
+        <div style="margin-top: 12px; font-size: 16px; line-height: 1.6;">
+          <div><strong>GenAI / LLMs:</strong> OpenAI GPT-4o, Anthropic Claude, RAG, LangChain, LangGraph, Prompt Engineering, Function Calling, Embeddings, pgvector, FAISS, Whisper, Hugging Face, LLM Evaluation</div>
+          <div style="margin-top: 8px;"><strong>ML &amp; MLOps:</strong> PyTorch, TensorFlow, scikit-learn, Transformers, LoRA Fine-tuning, CNNs, OpenCV, MLflow, AWS Bedrock, SageMaker, Lambda, SQS, CloudWatch, Docker, CI/CD</div>
+          <div style="margin-top: 8px;"><strong>Backend &amp; data:</strong> Node.js, NestJS, FastAPI, GraphQL, React, Apache Spark, PostgreSQL, MongoDB, Redis</div>
+          <div style="margin-top: 8px;"><strong>Languages:</strong> Python, TypeScript, JavaScript, SQL, NoSQL, C/C++</div>
+        </div>
+      </div>
+
+      <!-- education -->
+      <div class="vc-qv-card" style="margin-top: 22px; background: #fffdf8; border-radius: 18px; padding: 26px 30px; box-shadow: 0 6px 0 rgba(63, 49, 40, 0.14);">
+        <div style="font-family: 'Baloo 2', sans-serif; font-size: 26px; font-weight: 800;">Education</div>
+        <div class="vc-qv-row" style="margin-top: 12px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+          <div style="font-family: 'Baloo 2', sans-serif; font-size: 21px; font-weight: 800;">B.E. Computer Science — AI &amp; ML</div>
+          <div style="font-size: 15px; font-weight: 800; color: var(--accent, #E2654A); white-space: nowrap;">CGPA 9.6</div>
+        </div>
+        <div style="font-size: 16px; color: #7c6650;">New LJ Institute of Engineering &amp; Technology</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#E2654A&quot;, &quot;options&quot;: [&quot;#E2654A&quot;, &quot;#D9822B&quot;, &quot;#C4486B&quot;, &quot;#3E8E7E&quot;], &quot;section&quot;: &quot;Theme&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;speed&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.5, &quot;max&quot;: 2.5, &quot;step&quot;: 0.1, &quot;unit&quot;: &quot;x&quot;, &quot;section&quot;: &quot;Motion&quot;, &quot;tsType&quot;: &quot;number&quot; }
+}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.WORLD = 11600;
+    this.anim = {};
+    this.coinEls = new Set();
+    this.coinCount = 0;
+    this.x = 0;
+    this.tx = 0;
+    this.z = 1;
+    this.moving = null;
+  }
+
+  applyTweaks() {
+    if (!this.root) return;
+    this.root.style.setProperty('--accent', this.props.accent ?? '#E2654A');
+    const speed = this.props.speed ?? 1;
+    this.z = Math.min(1, window.innerHeight / 860);
+    this.maxX = Math.max(0, 11750 - window.innerWidth / this.z);
+    this.root.style.height = Math.round(this.maxX / speed + window.innerHeight) + 'px';
+    if (this.scene) {
+      this.scene.style.width = (100 / this.z) + '%';
+      this.scene.style.height = (100 / this.z) + '%';
+      this.scene.style.transform = 'scale(' + this.z + ')';
+    }
+  }
+
+  setQuickOpen(open, syncHash) {
+    this.quickOpen = open;
+    if (this.quick) {
+      this.quick.style.display = open ? 'block' : 'none';
+      if (open) this.quick.scrollTop = 0;
+    }
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (syncHash) {
+      try { history.replaceState(null, '', location.pathname + location.search + (open ? '#quick' : '')); } catch (e) {}
+    }
+  }
+
+  componentDidMount() {
+    this.applyTweaks();
+    // the side-scroller needs a wide screen; phones (and #quick links) land on the one-page view
+    if (location.hash === '#quick' || window.innerWidth < 760) this.setQuickOpen(true, false);
+    this.onResize = () => this.applyTweaks();
+    window.addEventListener('resize', this.onResize);
+
+    this.jumping = false;
+    this.onKey = (e) => {
+      if (e.key !== 'Enter') return;
+      const tag = (e.target && e.target.tagName) || '';
+      if (tag === 'BUTTON' || tag === 'A' || tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (this.quickOpen || this.jumping || !this.charOuter) return;
+      this.jumping = true;
+      this.charOuter.style.animation = 'vcJump 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      const onEnd = () => {
+        this.charOuter.style.animation = '';
+        this.jumping = false;
+        this.charOuter.removeEventListener('animationend', onEnd);
+      };
+      this.charOuter.addEventListener('animationend', onEnd);
+    };
+    window.addEventListener('keydown', this.onKey);
+
+    const LEVELS = [
+      [9950, 'LEVEL 6 · CONTACT'],
+      [8950, 'LEVEL 5 · EDUCATION'],
+      [7250, 'LEVEL 4 · PROJECTS'],
+      [4600, 'LEVEL 3 · EXPERIENCE'],
+      [2400, 'LEVEL 2 · SKILLS'],
+      [1050, 'LEVEL 1 · ABOUT'],
+      [-1, 'START'],
+    ];
+
+    const loop = () => {
+      const speed = this.props.speed ?? 1;
+      this.tx = Math.max(0, Math.min(this.maxX ?? this.WORLD, window.scrollY * speed));
+      const diff = this.tx - this.x;
+      this.x += diff * 0.14;
+      if (Math.abs(diff) < 0.15) this.x = this.tx;
+
+      if (this.world) this.world.style.transform = 'translate3d(' + (-this.x) + 'px,0,0)';
+      if (this.hills) this.hills.style.transform = 'translate3d(' + (-this.x * 0.45) + 'px,0,0)';
+      if (this.farHills) this.farHills.style.transform = 'translate3d(' + (-this.x * 0.28) + 'px,0,0)';
+      if (this.clouds) this.clouds.style.transform = 'translate3d(' + (-this.x * 0.18) + 'px,0,0)';
+      if (this.fill) this.fill.style.width = (this.x / (this.maxX || this.WORLD) * 100).toFixed(2) + '%';
+
+      // coin collection
+      const charX = this.x + (0.21 * window.innerWidth) / this.z + 34;
+      this.coinEls.forEach((el) => {
+        if (!el.isConnected) { this.coinEls.delete(el); return; }
+        const cx = parseFloat(el.dataset.x) + 13;
+        if (!el._got && charX >= cx) {
+          el._got = true;
+          this.coinCount++;
+          el.style.transition = 'transform 0.35s ease-out, opacity 0.35s ease-out';
+          el.style.transform = 'translateY(-46px) scale(1.5)';
+          el.style.opacity = '0';
+          if (this.coinLbl) this.coinLbl.textContent = this.coinCount + '/24';
+        }
+      });
+
+      const moving = Math.abs(this.tx - this.x) > 0.6;
+      if (moving !== this.moving) {
+        this.moving = moving;
+        const st = moving ? 'running' : 'paused';
+        Object.values(this.anim).forEach((el) => { if (el) el.style.animationPlayState = st; });
+      }
+      if (this.dir) {
+        const back = moving && this.tx < this.x;
+        const t = back ? 'scaleX(-1)' : 'none';
+        if (this.dir.style.transform !== t) this.dir.style.transform = t;
+      }
+      if (this.lvl) {
+        const cur = LEVELS.find((l) => this.x > l[0])[1];
+        if (this.lvl.textContent !== cur) this.lvl.textContent = cur;
+      }
+      this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+
+  componentDidUpdate() {
+    this.applyTweaks();
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+  }
+
+  renderVals() {
+    const coinClusters = [1150, 2420, 4870, 7420, 9020, 10330];
+    const coins = [];
+    coinClusters.forEach((base) => {
+      [0, 1, 2, 3].forEach((i) => {
+        coins.push({ x: base + i * 66, y: i === 1 || i === 2 ? 245 : 205 });
+      });
+    });
+    return {
+      tufts: Array.from({ length: 50 }, (_, i) => ({ x: i * 236 + 60 })),
+      flowers: Array.from({ length: 17 }, (_, i) => ({ x: i * 700 + 380 })),
+      coins,
+      setRoot: (el) => { this.root = el; if (el) this.applyTweaks(); },
+      setCharOuter: (el) => { this.charOuter = el; },
+      setScene: (el) => { this.scene = el; if (el) this.applyTweaks(); },
+      setWorld: (el) => { this.world = el; },
+      setHills: (el) => { this.hills = el; },
+      setFarHills: (el) => { this.farHills = el; },
+      setClouds: (el) => { this.clouds = el; },
+      setFill: (el) => { this.fill = el; },
+      setLvl: (el) => { this.lvl = el; },
+      setDir: (el) => { this.dir = el; },
+      setCoin: (el) => { if (el) this.coinEls.add(el); },
+      setCoinLbl: (el) => { this.coinLbl = el; },
+      setQuick: (el) => { this.quick = el; if (el) el.style.display = this.quickOpen ? 'block' : 'none'; },
+      openQuick: () => this.setQuickOpen(true, true),
+      closeQuick: () => this.setQuickOpen(false, true),
+      setBob: (el) => { this.anim.bob = el; },
+      setPony: (el) => { this.anim.pony = el; },
+      setArmL: (el) => { this.anim.armL = el; },
+      setArmR: (el) => { this.anim.armR = el; },
+      setLegL: (el) => { this.anim.legL = el; },
+      setLegR: (el) => { this.anim.legR = el; },
+      skipToContact: () => {
+        const speed = this.props.speed ?? 1;
+        window.scrollTo({ top: (this.maxX ?? this.WORLD) / speed, behavior: 'smooth' });
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
